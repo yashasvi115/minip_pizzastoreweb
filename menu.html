@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Menu</title>
+  <style>
+    /* Navbar Styles */
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+      font-family: 'Ariel', sans-serif;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: #8a5d54;
+    }
+
+    /* Apply border around the whole webpage */
+    body {
+      border: 5px solid #ffffff;
+      padding: 4px;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    /* Heading Styling */
+    h1,
+    h2 {
+      text-align: center;
+      margin-top: 20px;
+      color: #333;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #885621;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+
+    /* Table Styling */
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border: none;
+      border-collapse: collapse;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      color: #333;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      /* Initially hidden for animation */
+      transform: translateY(50px);
+      /* Start position for animation */
+      animation: fadeSlideIn 0.8s ease forwards;
+      /* Animation effect */
+    }
+
+    th,
+    td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #926639;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    td {
+      background-color: #fff;
+    }
+
+    table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    table tr:hover {
+      background-color: #ffe0d5;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Keyframes for Animation */
+    @keyframes fadeSlideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Add a slight delay to each table's animation */
+    table:nth-of-type(1) {
+      animation-delay: 0.2s;
+    }
+
+    table:nth-of-type(2) {
+      animation-delay: 0.4s;
+    }
+
+    table:nth-of-type(3) {
+      animation-delay: 0.6s;
+    }
+
+    table:nth-of-type(4) {
+      animation-delay: 0.8s;
+    }
+
+    /* Wrap the images inside a container */
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    /* Individual slide */
+    .carousel-slide {
+      min-width: 100%;
+      height: auto;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Adding the "dots" (navigation buttons) */
+    .carousel::after {
+      content: '';
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+    }
+
+    .carousel::after div {
+      margin: 0 5px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .carousel::after div:hover {
+      background-color: rgba(255, 255, 255, 1);
+    }
+
+    /* Animation to automatically cycle through images */
+    @keyframes slideAnimation {
+      0% {
+        transform: translateX(0);
+      }
+
+      33.33% {
+        transform: translateX(-100%);
+      }
+
+      66.66% {
+        transform: translateX(-200%);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    /* Applying the animation */
+    .carousel-images {
+      animation: slideAnimation 9s infinite;
+    }
+
+    .carousel {
+      width: 100%;
+      /* Makes it responsive */
+      max-width: 600px;
+      /* Limits max size */
+      margin: auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-slide {
+      position: relative;
+      min-width: 100%;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    /* Text overlay */
+    .carousel-text {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 10px 15px;
+      font-size: 18px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .carousel {
+        width: 90%;
+      }
+
+      .carousel-text {
+        font-size: 16px;
+        padding: 8px 12px;
+      }
+    }
+
+    .footer {
+      background-color: #222;
+      color: white;
+      padding: 25px 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .footer-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      text-align: left;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 250px;
+      margin-bottom: 15px;
+    }
+
+    .footer-column h3 {
+      color: #ff9800;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .footer-column p,
+    .footer-column ul {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .quick-links {
+      display: flex;
+      gap: 5px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .quick-links li {
+      display: inline;
+    }
+
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-column ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .footer-column ul li a:hover {
+      color: #ff9800;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
+    .quick-links-container {
+      margin-right: 50px;
+    }
+
+    .social-icons a img {
+      width: 28px;
+      margin-right: 10px;
+      transition: transform 0.3s, filter 0.3s;
+    }
+
+    .social-icons a img:hover {
+      transform: scale(1.3);
+      filter: brightness(1.3);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 8px;
+      font-size: 0.85rem;
+    }
+
+    /* Footer Quick Links Hover Effect */
+    .footer-column ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease-in-out, text-decoration 0.3s ease-in-out;
+    }
+
+    .footer-column ul li a:hover {
+      color: #ffcc00;
+      /* Gold shade for hover */
+      text-decoration: underline;
+      font-weight: bold;
+      letter-spacing: 1px;
+      /* Slight spacing effect */
+    }
+
+    /* Social Icons Hover Effect */
+    .social-icons a img {
+      width: 28px;
+      margin-right: 10px;
+      transition: transform 0.4s ease-in-out, filter 0.3s ease-in-out;
+    }
+
+    .social-icons a img:hover {
+      transform: rotate(10deg) scale(1.2);
+      /* Rotate and enlarge */
+      filter: brightness(1.4) contrast(1.1);
+      /* Enhance brightness and contrast */
+    }
+
+    /* Responsive Navbar */
+    @media (max-width: 768px) {
+      ul {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      li {
+        float: none;
+        width: 100%;
+      }
+    }
+
+    /* Responsive Headings */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* Responsive Table */
+    @media (max-width: 768px) {
+      table {
+        width: 100%;
+        font-size: 14px;
+      }
+
+      th,
+      td {
+        padding: 10px;
+      }
+    }
+
+    /* Responsive Carousel */
+    @media (max-width: 768px) {
+      .carousel {
+        width: 90%;
+      }
+
+      .carousel-text {
+        font-size: 14px;
+        padding: 6px 10px;
+      }
+
+      .carousel-slide img {
+        height: 250px;
+      }
+    }
+
+    /* Responsive Footer */
+    @media (max-width: 768px) {
+      .footer-section {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-column {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .quick-links {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+      }
+
+      .social-icons a {
+        margin: 0 5px;
+      }
+    }
+
+    /* Responsive Images */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Adjust Buttons for Small Screens */
+    @media (max-width: 768px) {
+      .carousel-btn {
+        font-size: 14px;
+        padding: 8px;
+      }
+    }
+
+    /* Responsive Border */
+    @media (max-width: 768px) {
+      body {
+        border-width: 2px;
+        padding: 2px;
+      }
+    }
+  </style>
+
+  <!-- JavaScript for Carousel Functionality -->
+  <script>
+    let index = 0;
+    const slides = document.querySelectorAll(".carousel-slide");
+
+    function moveSlide(direction) {
+      index += direction;
+      if (index < 0) {
+        index = slides.length - 1;
+      } else if (index >= slides.length) {
+        index = 0;
+      }
+      document.querySelector(".carousel-images").style.transform = `translateX(-${index * 100}%)`;
+    }
+  </script>
+
+</head>
+
+<body>
+  <ul>
+    <li><a href="piza.html">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="ingredients.html">Our Ingredients</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="reviews.html">Reviews</a></li>
+  </ul>
+
+  <h1>Our Menu</h1>
+  <h2>Handcrafted with Love and the Finest Ingredients</h2>
+
+  <!-- Menu Tables -->
+  <table>
+    <tr>
+      <th>Margherita Pizza</th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <td>Topped with Fresh tomatoes, Fresh mozzarella, Fresh basil</td>
+      <td>Rs.250</td>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <th>Chicken Pizza</th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <td>Topped with Fresh tomatoes, Mozzarella, Scrambled Chicken, Onions</td>
+      <td>Rs.300</td>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <th>Pineapple'o'clock</th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <td>Topped with Fresh tomatoes, Mozzarella, Fresh pineapple, Bacon, Fresh basil</td>
+      <td>Rs.350</td>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <th>Meat Town (Hot!)</th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <td>Topped with Fresh tomatoes, Mozzarella, Hot pepperoni, Hot sausage, Beef, Chicken</td>
+      <td>Rs.400</td>
+    </tr>
+  </table>
+  <!-- Carousel Structure -->
+  <div class="carousel">
+    <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+    <div class="carousel-images">
+      <div class="carousel-slide">
+        <img src="img.23.jpg" alt="Image 1">
+        <div class="carousel-text"><b>"OUR SPECIAL: Sashimi Pizza"</b></div>
+      </div>
+      <div class="carousel-slide">
+        <img src="imgg.24.jpeg" alt="Image 2">
+        <div class="carousel-text"><b>"OUR SPECIAL: Stuffed crust Pepperoni Pizza"</b></div>
+      </div>
+      <div class="carousel-slide">
+        <img src="img.25.jpg" alt="Image 3">
+        <div class="carousel-text"><b>"OUR SPECIAL: Burrata Pizza"</b></div>
+      </div>
+    </div>
+    <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+  </div>
+  </div>
+</body>
+
+<!-- Footer Section -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-row">
+      <!-- About Section -->
+      <div class="footer-column">
+        <h3>About Us</h3>
+        <p>Slice of Heaven serves the most delicious, handcrafted pizzas with fresh ingredients and authentic flavors.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-column quick-links-container">
+        <h3>Quick Links</h3>
+        <ul class="quick-links">
+          <li><a href="piza.html">Home</a></li> |
+          <li><a href="menu.html">Menu</a></li> |
+          <li><a href="about.html">About</a></li> |
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+
+      <!-- Social Media Links -->
+      <div class="footer-column">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><img src="img.20.jpeg" alt="Facebook"></a>
+          <a href="#"><img src="img.21.jpeg" alt="Instagram"></a>
+          <a href="#"><img src="img.22.jpeg" alt="Twitter"></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright Section -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Slice of Heaven. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</html>

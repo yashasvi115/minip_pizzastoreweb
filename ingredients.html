@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>about us</title>
+</head>
+<style>
+  /* Navbar Styles */
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    font-family: 'Ariel', sans-serif;
+  }
+
+  li {
+    float: left;
+  }
+
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    background-color: #8a5d54;
+  }
+
+  /* Carousel container */
+  .carousel {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Wrap the images inside a container */
+  .carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  /* Individual slide */
+  .carousel-slide {
+    min-width: 100%;
+    height: auto;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Adding the "dots" (navigation buttons) */
+  .carousel::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+  }
+
+  .carousel::after div {
+    margin: 0 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .carousel::after div:hover {
+    background-color: rgba(255, 255, 255, 1);
+  }
+
+  /* Animation to automatically cycle through images */
+  @keyframes slideAnimation {
+    0% {
+      transform: translateX(0);
+    }
+
+    33.33% {
+      transform: translateX(-100%);
+    }
+
+    66.66% {
+      transform: translateX(-200%);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  /* Applying the animation */
+  .carousel-images {
+    animation: slideAnimation 9s infinite;
+  }
+
+  .carousel {
+    width: 100%;
+    /* Makes it responsive */
+    max-width: 600px;
+    /* Limits max size */
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .carousel-slide {
+    position: relative;
+    min-width: 100%;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  /* Text overlay */
+  .carousel-text {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .carousel {
+      width: 90%;
+    }
+
+    .carousel-text {
+      font-size: 16px;
+      padding: 8px 12px;
+    }
+  }
+
+
+  /* Page background */
+  body {
+    background-color: #f5f5f5;
+    /* Light gray */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  /* Carousel container */
+  .carousel {
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: white;
+  }
+
+  /* Image container */
+  .carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .carousel-slide {
+    position: relative;
+    min-width: 100%;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  /* Text overlay */
+  .carousel-text {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 12px 18px;
+    font-size: 18px;
+    border-radius: 5px;
+    text-align: center;
+    width: 80%;
+  }
+
+  /* Navigation buttons */
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .prev {
+    left: 10px;
+  }
+
+  .next {
+    right: 10px;
+  }
+
+  .carousel-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .carousel {
+      width: 90%;
+    }
+
+    .carousel-text {
+      font-size: 16px;
+      padding: 8px 12px;
+    }
+  }
+
+  .banner {
+    width: 100%;
+    height: 300px;
+    /* Adjust height as needed */
+    background-image: url("img.19.avif");
+    /* Replace with your image */
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /* Moves image behind navbar */
+    opacity: 0.7;
+    /* Adjust transparency */
+  }
+
+  .footer {
+    background-color: #222;
+    color: white;
+    padding: 25px 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .footer-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .footer-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .footer-column {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 15px;
+  }
+
+  .footer-column h3 {
+    color: #ff9800;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .footer-column p,
+  .footer-column ul {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .quick-links {
+    display: flex;
+    gap: 5px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .quick-links li {
+    display: inline;
+  }
+
+
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-column ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .footer-column ul li a:hover {
+    color: #ff9800;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+
+  .quick-links-container {
+    margin-right: 50px;
+  }
+
+  .social-icons a img {
+    width: 28px;
+    margin-right: 10px;
+    transition: transform 0.3s, filter 0.3s;
+  }
+
+  .social-icons a img:hover {
+    transform: scale(1.3);
+    filter: brightness(1.3);
+  }
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 8px;
+    font-size: 0.85rem;
+  }
+
+  /* Footer Quick Links Hover Effect */
+  .footer-column ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, text-decoration 0.3s ease-in-out;
+  }
+
+  .footer-column ul li a:hover {
+    color: #ffcc00;
+    /* Gold shade for hover */
+    text-decoration: underline;
+    font-weight: bold;
+    letter-spacing: 1px;
+    /* Slight spacing effect */
+  }
+
+  /* Social Icons Hover Effect */
+  .social-icons a img {
+    width: 28px;
+    margin-right: 10px;
+    transition: transform 0.4s ease-in-out, filter 0.3s ease-in-out;
+  }
+
+  .social-icons a img:hover {
+    transform: rotate(10deg) scale(1.2);
+    /* Rotate and enlarge */
+    filter: brightness(1.4) contrast(1.1);
+    /* Enhance brightness and contrast */
+  }
+
+  /* Responsive Navbar */
+  @media (max-width: 768px) {
+    ul {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    li {
+      float: none;
+      width: 100%;
+    }
+  }
+
+  /* Responsive Carousel */
+  @media (max-width: 1024px) {
+    .carousel {
+      max-width: 90%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .carousel {
+      width: 95%;
+    }
+
+    .carousel-text {
+      font-size: 14px;
+      padding: 6px 10px;
+      width: 90%;
+    }
+
+    .carousel-slide img {
+      height: 250px;
+    }
+
+    .carousel-btn {
+      padding: 8px 12px;
+      font-size: 16px;
+    }
+  }
+
+  /* Responsive Banner */
+  @media (max-width: 768px) {
+    .banner {
+      height: 200px;
+      background-size: cover;
+    }
+  }
+
+  /* Responsive Footer */
+  @media (max-width: 768px) {
+    .footer-section {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .footer-column {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .quick-links {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+    }
+
+    .social-icons a {
+      margin: 0 5px;
+    }
+  }
+
+  /* Responsive Text */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  }
+
+  /* Responsive Body Padding */
+  @media (max-width: 768px) {
+    body {
+      padding: 5px;
+    }
+
+    .carousel {
+      margin: auto;
+    }
+  }
+</style>
+
+
+<!-- JavaScript for Carousel Functionality -->
+<script>
+  let index = 0;
+  const slides = document.querySelectorAll(".carousel-slide");
+
+  function moveSlide(direction) {
+    index += direction;
+    if (index < 0) {
+      index = slides.length - 1;
+    } else if (index >= slides.length) {
+      index = 0;
+    }
+    document.querySelector(".carousel-images").style.transform = `translateX(-${index * 100}%)`;
+  }
+</script>
+
+
+<body>
+  <!-- Full-width Banner -->
+  <div class="banner"></div>
+
+
+  <!-- Navbar -->
+  <ul>
+    <li><a href="piza.html">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="ingredients.html">Our Ingredients</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="reviews.html">Reviews</a></li>
+  </ul>
+  <br>
+  <!-- Carousel Structure -->
+  <div class="carousel">
+    <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+    <div class="carousel-images">
+      <div class="carousel-slide">
+        <img src="IMG.15.jpg" alt="Image 1">
+        <div class="carousel-text"><b>Super Deluxe Pizza</b>
+          A cheesy, meaty delight with mozzarella, cheddar, pepperoni, beef, mushrooms, olives, and onions on a soft
+          crust! </div>
+      </div>
+      <div class="carousel-slide">
+        <img src="IMG.16.jpg" alt="Image 2">
+        <div class="carousel-text">"Enjoy a <b>Cheesy Crescent Roll Pizza</b>, Topped with flaky crust, creamy cheese,
+          fresh
+          veggies, and bold flavors for the perfect bite!" </div>
+      </div>
+      <div class="carousel-slide">
+        <img src="img.17.jpeg" alt="Image 3">
+        <div class="carousel-text">"Enjoy <b>Classic Margherita</b> with fluffy dough, rich sauce, creamy mozzarella,
+          and
+          fresh, bold toppings!"</div>
+      </div>
+    </div>
+    <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+  </div>
+  </div>
+</body>
+<!-- Footer Section -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-row">
+      <!-- About Section -->
+      <div class="footer-column">
+        <h3>About Us</h3>
+        <p>Slice of Heaven serves the most delicious, handcrafted pizzas with fresh ingredients and authentic flavors.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-column quick-links-container">
+        <h3>Quick Links</h3>
+        <ul class="quick-links">
+          <li><a href="piza.html">Home</a></li> |
+          <li><a href="menu.html">Menu</a></li> |
+          <li><a href="about.html">About</a></li> |
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+
+      <!-- Social Media Links -->
+      <div class="footer-column">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><img src="img.20.jpeg" alt="Facebook"></a>
+          <a href="#"><img src="img.21.jpeg" alt="Instagram"></a>
+          <a href="#"><img src="img.22.jpeg" alt="Twitter"></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright Section -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Slice of Heaven. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</html>
